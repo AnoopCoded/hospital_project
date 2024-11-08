@@ -1,0 +1,24 @@
+{% extends 'patient/patient_base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 style="text-align: center; color: blue;">Educational Materials</h1>
+<hr>
+
+{% for material in materials %}
+    <div class="container text-center ">
+        <div class="row">
+          <div class="col-md-8 border mb-4 mx-auto " style="background-color: rgb(246, 13, 13); color: white; ">
+           
+        <h4 style="color: rgb(0, 0, 0);"><strong >{{ material.title }}</strong></h4>
+        <h6>{{ material.description }}</h6>
+        <a href="{{ material.file.url }}">Download</a>
+          </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+
+
+{% endblock %}
+

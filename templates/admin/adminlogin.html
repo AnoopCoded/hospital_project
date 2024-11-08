@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Adnin || Login</title>
+
+
+  <style type="text/css">
+    body {
+      color: #aa082e;
+      background-color: #b6bde7;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  <br>
+  <br>
+  <br><br>
+
+  <!--- login page for admin by admin(sumit)  ---------->
+  <form method="post">
+    {% csrf_token %}
+    <div class="container register-form">
+      <div class="form">
+        <div class="note">
+          <p>Admin Login Page</p>
+        </div>
+
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+              {% if messages %}
+              <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+
+              <label for="">Username:</label>
+              <input type="text" name="username" class="form-control my-3" id="floatingInput"
+                placeholder=" Enter Your Username">
+              <label for="">Password:</label>
+              <input type="password" name="password" class="form-control mb-3" id="floatingpassword"
+                placeholder=" Enter the Password">
+
+            </div>
+          </div>
+          <button type="submit" class="btnSubmit">Login</button>
+          
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <br><br><br>
+  <!--
+  developed By : sumit kumar
+  facebook : fb.com/sumit.luv
+  youtube : youtube.com/lazycoders
+  -->
+
+  {% include "footer.html" %}
+</body>
+
+</html>

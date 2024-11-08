@@ -1,0 +1,52 @@
+{% extends 'billing/base_generic.html' %}
+
+{% block content %}
+  <div class="bill-detail">
+      <h1>Bill for {{ patient_bill.patient.user }}</h1>
+      <table>
+      <tr>
+        <th><strong>Doctor's Name:</strong></th>
+        <td>{{ patient_bill.doctor_name }}</td>
+      </tr>
+      <tr>
+        <th>Room Charge:</th>
+        <td> {{ patient_bill.roomCharge }}</td>
+      </tr>
+      <tr>
+        <th> Medicine Cost: </th>
+        <td> {{ patient_bill.medicineCost }} </td>
+      </tr>
+      <tr>
+        <th> Doctor Fee: </th>
+        <td>{{ patient_bill.doctorFee }} </td>
+      </tr>
+      <tr>
+        <th>Other Charges: </th>
+        <td>{{ patient_bill.OtherCharge }} </td>
+      </tr>
+      <tr>
+        <th>Total: </th>
+        <td>{{ patient_bill.total }} </td>
+      </tr>
+    </table>
+      <div class="amounts">
+          <p><strong>Amount Due:</strong> <span>{{ patient_bill.amount_due }}</span></p>
+          <p><strong>Amount Paid:</strong> <span>{{ patient_bill.total_paid }}</span></p>
+      </div>
+
+      <div class="status {% if patient_bill.paid %}paid{% else %}unpaid{% endif %}">
+          <strong>Status:</strong> {% if patient_bill.paid %} Paid {% else %} Unpaid {% endif %}
+      </div>
+
+      {% if not patient_bill.paid %}
+        <div class="payment-link">
+            <a href="{% url 'make_payment' patient_bill.id %}">Make a Payment</a>
+        </div>
+      {% else %}
+        <div class="paid-message">
+            <p style="color: green;">This bill has already been paid.</p>
+        </div>
+      {% endif %}
+  </div>
+{% endblock %}
+

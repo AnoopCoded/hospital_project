@@ -1,0 +1,65 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+{% include 'admin/admin_dashboard_cards.html' %}
+
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <!-- Doctors Table -->
+    <div class="panel panel-primary col-md-6">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Doctors</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Speciality</th>
+            <th>Department</th>
+            <th>Image</th>
+            <th>Availability</th>
+          </tr>
+        </thead>
+        {% for d in doctors %}
+        <tr>
+          <td>{{ d.user }}</td>
+          <td>{{ d.doc_spec }}</td>
+          <td>{{ d.dept_name }}</td>
+          <td><img src="{{ d.dep_image.url }}" class="card-img-top-rounded w-50 h-25" alt="..."></td>
+          <td>{{ d.availability }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <!-- Recent Patients Table -->
+    <div class="panel panel-primary col-md-6">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Recent Patients</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Date of Birth</th>
+            <th>Address</th>
+            <th>Medical History</th>
+          </tr>
+        </thead>
+        {% for p in patients %}
+        <tr>
+          <td>{{ p.user }}</td>
+          <td>{{ p.phone_number }}</td>
+          <td>{{ p.date_of_birth }}</td>
+          <td>{{ p.address }}</td>
+          <td>{{ p.medical_history }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,210 @@
+/* General styling for the bill detail page */
+.bill-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading style */
+.bill-detail h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Table styling */
+.bill-detail table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.bill-detail th,
+.bill-detail td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: #555;
+}
+
+.bill-detail th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.bill-detail td {
+    background-color: #fafafa;
+}
+
+.bill-detail td span {
+    font-weight: bold;
+}
+
+/* Amount and Status section */
+.amounts p,
+.status {
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.amounts p strong,
+.status strong {
+    color: #333;
+}
+
+.amounts span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Status (Paid / Unpaid) */
+.status.paid {
+    color: green;
+    font-weight: bold;
+}
+
+.status.unpaid {
+    color: red;
+    font-weight: bold;
+}
+
+/* Payment link */
+.payment-link a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.payment-link a:hover {
+    background-color: #0056b3;
+}
+
+/* Paid message */
+.paid-message {
+    font-size: 1.1rem;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .bill-detail {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .bill-detail h1 {
+        font-size: 1.8rem;
+    }
+
+    .bill-detail table th,
+    .bill-detail table td {
+        padding: 8px;
+    }
+}
+
+/* General styling for the make payment page */
+.make-payment-page {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+.make-payment-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Paragraphs */
+.make-payment-page p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Form container */
+.make-payment-page form {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+/* Form fields (inputs and labels) */
+.make-payment-page form input,
+.make-payment-page form select,
+.make-payment-page form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Button styling */
+.make-payment-page form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.make-payment-page form button:hover {
+    background-color: #0056b3;
+}
+
+/* Error messages (messages) */
+.make-payment-page .messages {
+    margin-top: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+.make-payment-page .messages ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.make-payment-page .messages li {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.make-payment-page .messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Success messages (if any) */
+.make-payment-page .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}

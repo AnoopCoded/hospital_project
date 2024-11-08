@@ -1,0 +1,17 @@
+<!-- patient_bills.html -->
+{% extends 'billing/base_generic.html' %}
+
+{% block content %}
+<h1>Patient Bills</h1>
+
+<ul>
+    {% for bill in bills %}
+    <li>
+        <a href="{% url 'view_bill' bill.id %}">Bill #{{ bill.id }} - Total: ${{ bill.total }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'create_bill' id=patient_id %}">Create New Bill</a>
+
+{% endblock %}

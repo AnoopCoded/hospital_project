@@ -1,0 +1,64 @@
+{% extends 'patient/patient_base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Load Bootstrap CSS from CDN -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-md-12">
+
+      <!-- Title Section -->
+      <div class="text-center mb-4">
+        <h2>Billing Information</h2>
+        <p class="lead">Here are the details of your bill and payment status.</p>
+      </div>
+
+      <!-- Bill Information Table -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title text-center">Bill Details</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Total Bill Amount</th>
+                <th>Paid Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for bill in patient.PatientBill.all %}
+                <tr>
+                  <td>${{ bill.total }}</td>
+                  <td>{{ bill.paid|yesno:"Yes,No" }}</td>
+                  <td>
+                    {% if not bill.paid %}
+                      <a href="{% url 'bill_detail' bill.id %}" class="btn btn-primary btn-sm">Make Payment</a>
+                    {% else %}
+                      <span class="badge badge-success">Paid</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="3" class="text-center">No billing information available.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Payment Information Section -->
+      
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

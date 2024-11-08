@@ -1,0 +1,16 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <h2>Are you sure you want to delete the department "{{ department.dep_name }}"?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'department_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

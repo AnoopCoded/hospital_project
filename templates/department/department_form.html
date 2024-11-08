@@ -1,0 +1,17 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <h2>{% if form.instance.pk %}Update{% else %}Create{% endif %} Department</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+{% endblock %}

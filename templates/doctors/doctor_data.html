@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+Doctors
+{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ doctor.user.username }}</h1>
+<p>Specialization: {{ doctor.doc_spec }}</p>
+<p>Department: {{ doctor.dept_name }}</p>
+<p>Availability: {{ doctor.availability }}</p>
+
+<hr>
+
+
+
+
+{% endblock %}

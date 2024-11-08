@@ -1,0 +1,109 @@
+{% extends 'doctors/doctor_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #007bff;
+    margin-top: 20px;
+}
+
+form {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+  </style>
+</head>
+<!--
+written By : sumit kumar
+facebook : fb.com/sumit.luv
+-->
+
+
+<h1>Create Prescription and Medical Records for {{ patient.user.username }}</h1>
+<hr>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <h2>Prescription</h2>
+    {{ prescription_form.as_p }}
+
+    <h2>Medical History</h2>
+    {{ medical_history_form.as_p }}
+
+    <h2>Treatment Plan</h2>
+    {{ treatment_plan_form.as_p }}
+
+    <button type="submit">Submit All</button>
+    <a href="{% url 'patient_detail' patient.id %}">Cancel</a>
+</form>
+
+
+
+
+{% endblock content %}

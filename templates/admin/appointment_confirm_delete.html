@@ -1,0 +1,52 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    h4{
+        border: 1px solid #cdcedb;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #5a6ae5;
+    }
+    
+</style>
+
+</head>
+<!--
+written By : sumit kumar
+facebook : fb.com/sumit.luv
+-->
+
+<h1>Delete Appointment</h1>
+<h3> you sure you want to delete this appointment?</h3>
+
+
+    <h4>{{ appointment.patient.user }}</h4>
+    <h4>{{ appointment.doctor.user }}</h4>
+    <h4>{{ appointment.date }}</h4>
+    <h4>{{ appointment.reason }}</h4>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary mb-2">Confirm Delete</button>
+</form>
+<a href="{% url 'appointment_list' %}" class="btn btn-primary">Cancel</a>
+
+{% endblock content %}
+
+   
+</body>
+</html>
+
+

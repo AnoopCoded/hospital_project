@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+     a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+   /* styles.css */
+
+   body {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    
+}
+.form {
+    
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form h1 {
+  font-family: Arial, sans-serif;
+    text-align: center;
+    color: #f61515;
+    margin-bottom: 20px;
+}
+
+.form h2 {
+    color: #007bff;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.form p {
+    font-size: 16px;
+    color: #555;
+}
+
+.form  ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.form li {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.form li:hover {
+    background-color: #e9ecef; /* Light gray background on hover */
+}
+
+.form .container {
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+  </style>
+</head>
+<body>
+
+<div class="form">
+    <div class="details">
+<h1>Patient Details</h1>
+<hr>
+<h2>{{ patient.user.username }}</h2>
+
+<p>Date of Birth: {{ patient.date_of_birth }}</p>
+<p>Phone Number: {{ patient.phone_number }}</p>
+<p>Address: {{ patient.address }}</p>
+</div>
+
+<h2>Medical History</h2>
+<ul>
+    {% for history in medical_histories %}
+        <li>{{ history.condition }} - Diagnosed on: {{ history.date_diagnosed }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Treatment Plans</h2>
+<ul>
+    {% for plan in treatment_plans %}
+        <li>{{ plan.treatment_description }} (Starts on: {{ plan.start_date }})</li>
+    {% endfor %}
+</ul>
+
+<h2>Prescriptions</h2>
+<ul>
+    {% for prescription in prescriptions %}
+        <li>{{ prescription.medication_name }} (Dosage: {{ prescription.dosage }})</li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+</html>
+

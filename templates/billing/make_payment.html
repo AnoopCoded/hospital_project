@@ -1,0 +1,26 @@
+{% extends 'billing/base_generic.html' %}
+
+{% block content %}
+  <div class="make-payment-page">
+    <h1>Make Payment for Bill ({{ patient_bill.patient.name }})</h1>
+
+    <p><strong>Amount Due:</strong> ${{ patient_bill.amount_due }}</p>
+    <p><strong>Amount Paid:</strong> ${{ patient_bill.total_paid }}</p>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ payment_form.as_p }}
+      <button type="submit">Submit Payment</button>
+    </form>
+
+    {% if messages %}
+      <div class="messages">
+        <ul>
+          {% for message in messages %}
+            <li class="{% if message.tags == 'success' %}success{% endif %}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

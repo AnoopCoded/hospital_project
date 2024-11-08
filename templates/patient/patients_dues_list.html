@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Patients and Their Total Dues</h1>
+<ul>
+    {% for patient_due in patients_with_dues %}
+    {% for bill in patient_due.patient.PatientBill.all %}
+        <a href="{% url 'pay_patient_due' bill.id %}">Pay Due</a>
+    {% endfor %}
+{% endfor %}
+</ul>
+
+</body>
+</html>

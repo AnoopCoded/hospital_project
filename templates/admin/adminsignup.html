@@ -1,0 +1,151 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Admin Registration</title>
+
+  <!-- Include Bootstrap CSS (If not already included) -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    body {
+      color: #aa082e;
+      background-color: #b6bde7;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .alert {
+      margin-top: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  
+  <div class="container mt-5">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="register-form">
+        <div class="note">
+          <p>Admin - Register to Hospital</p>
+        </div>
+
+        <!-- Display messages if any -->
+        {% if messages %}
+          <div class="alert alert-warning">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+    
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+              
+              <!-- Username Field -->
+              <div class="form-group">
+                {% render_field form.username class="form-control" placeholder="Username" %}
+                {% if form.username.errors %}
+                  <div class="text-danger">
+                    {% for error in form.username.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group">
+                {% render_field form.email class="form-control" placeholder="Email" %}
+                {% if form.email.errors %}
+                  <div class="text-danger">
+                    {% for error in form.email.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <!-- Password Field -->
+              <div class="form-group">
+                {% render_field form.password1 class="form-control" placeholder="Password" %}
+                {% if form.password1.errors %}
+                  <div class="text-danger">
+                    {% for error in form.password1.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <!-- Confirm Password Field -->
+              <div class="form-group">
+                {% render_field form.password2 class="form-control" placeholder="Confirm Password" %}
+                {% if form.password2.errors %}
+                  <div class="text-danger">
+                    {% for error in form.password2.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <button type="submit" class="btnSubmit">Submit</button>
+              <div class="text-center mt-3">Already have an account? <a href="{% url 'adminLogin' %}">Login here</a></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  {% include "footer.html" %}
+
+  <!-- Include Bootstrap JS (If not already included) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

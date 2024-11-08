@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- You can put this CSS directly in the head of your HTML template or in an external .css file -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .create-link {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .create-link:hover {
+        background-color: #218838;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        background-color: #fff;
+        margin-bottom: 15px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    li h2 {
+        margin: 0;
+        color: #333;
+    }
+
+    li p {
+        font-size: 1em;
+        color: #555;
+    }
+
+    .edit-delete-links {
+        margin-top: 10px;
+    }
+
+    .edit-delete-links a {
+        margin-right: 15px;
+        padding: 8px 15px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .edit-delete-links a:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .container {
+            width: 95%;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+    }
+
+</style>
+
+</head>
+<body>
+    <h1>Health Tips</h1>
+<a href="{% url 'resource_create' %}" class="btn btn-primary"  >Create a new Resources</a>
+<a href="{% url 'ehrView' %}" class="btn btn-primary"  >Home</a>
+<ul>
+    {% for res in resources %}
+        <li>
+            <h2>{{ res.name }}</h2>
+            <p>{{ res.link }}</p>
+            <a href="{% url 'resource_update' res.pk %}" class="btn btn-success">Edit</a>
+            <a href="{% url 'resource_delete' res.pk %}" class="btn btn-danger">Delete</a>
+        </li>
+    {% endfor %}
+</ul> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

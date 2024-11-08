@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+About
+{% endblock %}
+
+{% block content %}
+<h1>{{ patient.user}} {{ patient.date_of_birth }}</h1>
+<h2>Medical History</h2>
+<ul>
+    {% for history in medical_histories %}
+        <li>{{ history.condition }} (Diagnosed: {{ history.date_diagnosed }})</li>
+    {% empty %}
+        <li>No medical history found.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_medical_history' patient.id %}">Add Medical History</a>
+
+<h2>Treatment Plans</h2>
+<ul>
+    {% for plan in treatment_plans %}
+        <li>{{ plan.treatment_description }} (Start: {{ plan.start_date }})</li>
+    {% empty %}
+        <li>No treatment plans found.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_treatment_plan' patient.id %}">Add Treatment Plan</a>
+
+{% endblock %}
+

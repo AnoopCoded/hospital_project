@@ -1,0 +1,101 @@
+{% extends 'patient/patient_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    /* styles.css */
+    .card {
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Card header */
+    .card-header {
+      background-color: #007bff;
+      color: white;
+    }
+
+    /* Table Styles */
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #f8f9fa;
+    }
+
+    .table th,
+    .table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .table td {
+      font-size: 1rem;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .badge-success {
+      background-color: #28a745;
+    }
+
+    /* Responsive Design for Mobile Devices */
+    @media (max-width: 768px) {
+      .card-body {
+        padding: 10px;
+      }
+
+      .table td,
+      .table th {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+
+<h1 style="text-align: center;">Patient Profile</h1>
+<hr>
+{%include 'patient/patient_dashboard_cards.html'%}
+<br><br>
+
+<hr>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-md-12">
+
+      <!-- Patient Profile Section -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3 class="card-title">Patient Profile: {{ patient.user.first_name }} {{ patient.user.last_name }}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Email:</strong> {{ patient.user.email }}</p>
+          <p><strong>Phone:</strong> {{ patient.phone_number }}</p>
+          <p><strong>Address:</strong> {{ patient.address }}</p>
+          <p><strong>Date of Birth:</strong> {{ patient.date_of_birth }}</p>
+          <p><strong>Gender:</strong> {{ patient.get_gender_display }}</p>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+  {% endblock %}

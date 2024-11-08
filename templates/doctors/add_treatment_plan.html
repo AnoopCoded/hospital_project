@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+About
+{% endblock %}
+
+{% block content %}
+<h1>Add Treatment Plan for {{ patient.first_name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="treatment_description">Treatment Description:</label>
+    <textarea name="treatment_description" required></textarea>
+
+    <label for="start_date">Start Date:</label>
+    <input type="date" name="start_date" required>
+
+    <label for="end_date">End Date (optional):</label>
+    <input type="date" name="end_date">
+
+    <label for="doctor_notes">Doctor Notes:</label>
+    <textarea name="doctor_notes"></textarea>
+    
+    <button type="submit">Add Treatment Plan</button>
+</form>
+<a href="{% url 'patient_detail' patient.id %}">Cancel</a>
+
+{% endblock %}

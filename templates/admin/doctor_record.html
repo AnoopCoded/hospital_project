@@ -1,0 +1,50 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center bg-primary text-white py-3">
+                    <h5 class="panel-title mb-0">Doctors</h5>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered table-striped" id="dev-table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Speciality</th>
+                                <th>Department</th>
+                                <th>Image</th>
+                                <th>Availability</th>
+                                <th colspan="2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in doctor %}
+                            <tr>
+                                <td>{{ d.user }}</td>
+                                <td>{{ d.doc_spec }}</td>
+                                <td>{{ d.dept_name }}</td>
+                                <td><img src="{{ d.dep_image.url }}" class="img-thumbnail" alt="{{ d.user }}" style="width: 60px; height: 60px;"></td>
+                                <td>{{ d.availability }}</td>
+                                <td>
+                                    <a href="{% url 'doctor_update' d.id d.user.username %}" class="btn btn-success btn-sm">
+                                        <i class="fas fa-edit"></i> Update
+                                    </a>
+                                    <a href="{% url 'doctor_delete' %}" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

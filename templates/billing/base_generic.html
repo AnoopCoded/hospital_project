@@ -1,0 +1,36 @@
+<!-- base_generic.html -->
+ {% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Billing System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/billing.css' %}">
+
+    <!-- Optionally, include Bootstrap CSS for extra styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <header>
+        <h1>Billing System</h1>
+        <nav>
+            <ul>
+                
+                
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>Billing System &copy; 2024</p>
+    </footer>
+</body>
+</html>

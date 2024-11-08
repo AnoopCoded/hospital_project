@@ -1,0 +1,18 @@
+{% extends 'patient/patient_base.html' %}
+{% load static %}
+{% block content %}
+
+{% for d in docs %}
+
+<div class="card text-center " style="width: 18rem; display: inline-block; ">
+    <img src="{{d.dep_image.url}}" class="card-img-top w-150 h-150" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Dr.{{d.user}}</h5>
+      <p class="card-text">{{d.doc_spec}}</p>
+      <h6 class="card-text">{{d.dept_name}}</h6>
+      <p class="card-text">{{d.availability}}</p>
+    
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

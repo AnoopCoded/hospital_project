@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+About
+{% endblock %}
+
+{% block content %}
+<h1>Add Medical History for {{ patient.first_name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="condition">Condition:</label>
+    <input type="text" name="condition" required>
+    
+    <label for="date_diagnosed">Date Diagnosed:</label>
+    <input type="date" name="date_diagnosed" required>
+
+    <label for="notes">Notes:</label>
+    <textarea name="notes"></textarea>
+    
+    <button type="submit">Add Medical History</button>
+</form>
+<a href="{% url 'patient_detail' patient.id %}">Cancel</a>
+
+{% endblock %}
+

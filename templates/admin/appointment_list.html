@@ -1,0 +1,74 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #cdcedb;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #5a6ae5;
+    }
+    
+</style>
+</head>
+<!--
+written By : sumit kumar
+facebook : fb.com/sumit.luv
+-->
+<div class="container">
+  <div class="panel ">
+    <div class="panel-heading">
+        <h1>Appointments</h1>
+        <a href="{% url 'appointment_create' %}" class="btn btn-primary btn-sm">Add New Appointment</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Reason</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.patient.user }}</td>
+                        <td>{{ appointment.doctor.user }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.reason }}</td>
+                        <td>
+                            <a href="{% url 'appointment_update' appointment.pk %}"class="btn btn-warning btn-sm">Update</a>
+                            <a href="{% url 'appointment_delete' appointment.pk %}"class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No appointments available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+                   
+                    
+               
+  </div>
+</div>
+
+
+{% endblock content %}
+
+   
+</body>
+</html>

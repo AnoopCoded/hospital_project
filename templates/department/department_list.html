@@ -1,0 +1,46 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container mt-4">
+    <div class="container">
+        <h2>Departments</h2>
+        <a href="{% url 'department_create' %}" class="btn btn-primary mb-3">Create Department</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for department in departments %}
+                    <tr>
+                        <td>{{ department.dep_name }}</td>
+                        <td>{{ department.dep_description }}</td>
+                        <td>
+                            <a href="{% url 'department_update' department.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'department_delete' department.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}
+
+
+
